@@ -16,5 +16,5 @@
 - there can be specified that the _n_ worst races can be discarded
 - there are special rules how to handle ties (when you have competitors on the same place in competition results)
 
-## Tassk1
+## Task1
 Calculate rank and points for a signle race (for all three data1/race1.csv, data1/race2.csv, data1/race3.csv)
