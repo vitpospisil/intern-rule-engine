@@ -18,3 +18,7 @@
 
 ## Task1
 Calculate rank and points for a signle race (for all three data1/race1.csv, data1/race2.csv, data1/race3.csv)
+
+## Notes
+The application should be a simple console application no UI.
+The code changes should be done on your fork (that means first you need to fork the repo and there do all the changes)
