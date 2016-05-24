@@ -11,7 +11,6 @@ namespace Rule_engine
     {
         static void Main(string[] args)
         {
-            Competition x = new Competition();
             Races y = new Races();
             Console.WriteLine(y.PointsOfTeams()[0].ToString());
             Console.ReadKey();
