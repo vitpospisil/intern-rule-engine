@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rule_engine.Model;
 
 namespace Rule_engine
 {
@@ -10,7 +11,9 @@ namespace Rule_engine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("");
+            Competition x = new Competition();
+            Races y = new Races();
+            Console.WriteLine(y.PointsOfTeams()[0].ToString());
             Console.ReadKey();
         }
     }
