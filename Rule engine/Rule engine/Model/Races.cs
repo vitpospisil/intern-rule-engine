@@ -16,7 +16,7 @@ namespace Rule_engine.Model
                 new Team("Team 2", 5),
                 new Team("Team 3", 4),
                 new Team("Team 4", 7),
-                new Team("Team 5", 1),
+                new Team("Team 5", 3),
                 new Team("Team 6", 11),
                 new Team("Team 7", 8),
                 new Team("Team 8", 12),

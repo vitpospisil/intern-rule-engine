@@ -14,6 +14,7 @@ namespace Rule_engine
             Races races = new Races();
 
             var race1 = races.FirstRace();
+            Rules.CalculateRank(race1);
             Rules.CalculatePoints(race1);
             PrintRaceTable(race1);
             Console.ReadKey();
@@ -23,8 +24,9 @@ namespace Rule_engine
         {
             foreach(var f in teams.OrderBy(i => i.Rank))
             {
-                Console.WriteLine(f.Name + " is at " + f.Rank);
+                Console.WriteLine(f.Name + " is at " + f.Position + " position");
             }
+            Console.WriteLine();
         }
     }
 }
