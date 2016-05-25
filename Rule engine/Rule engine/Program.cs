@@ -11,9 +11,20 @@ namespace Rule_engine
     {
         static void Main(string[] args)
         {
-            Races y = new Races();
-            Console.WriteLine(y.PointsOfTeams()[0].ToString());
+            Races races = new Races();
+
+            var race1 = races.FirstRace();
+            Rules.CalculatePoints(race1);
+            PrintRaceTable(race1);
             Console.ReadKey();
+        }
+
+        static void PrintRaceTable(List<Team> teams)
+        {
+            foreach(var f in teams.OrderBy(i => i.Rank))
+            {
+                Console.WriteLine(f.Name + " is at " + f.Rank);
+            }
         }
     }
 }

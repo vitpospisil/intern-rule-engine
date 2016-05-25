@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Rule Engine.cs" />
+    <Compile Include="Model\Races.cs" />
+    <Compile Include="Model\Team.cs" />
+    <Compile Include="Model\Rules.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
