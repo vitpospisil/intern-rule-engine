@@ -15,7 +15,7 @@ namespace Rule_engine.Model
             int countOfTeamsWithSameRank = 0;
             foreach (var f in teams.OrderBy(i => i.Position))
             {
-                if (f.Position > 0)
+                if (f.Position != 0)
                 {
                     if(f.Position == previousposition)
                     {
@@ -24,7 +24,7 @@ namespace Rule_engine.Model
                     if (f.Position != previousposition)
                     {
                         rank = rank + 1 + countOfTeamsWithSameRank;
-                        countOfTeamsWithSameRank = 0;
+                        countOfTeamsWithSameRank = 0;   
                     }
                     f.Rank = rank;
                 }
@@ -36,32 +36,58 @@ namespace Rule_engine.Model
 
         public static void CalculatePoints(List<Team> teams)
         {
-            double previousSamePoints = -1;
+            double points = 0;
+
+
             teams = teams.OrderBy(i => i.Position).ToList();
-            foreach (var p in teams.OrderBy(i => i.Position))
+            for(int i = 0; i < teams.Count; i += 1)
             {
-                
-                if(p.Points > 0)
+                int counterOfTeamsWithSamePosition = 0;
+                for (int y = i + 1; y < teams.Count; y += 1)
                 {
-                    if(p.Points != previousSamePoints)
+                    if (teams[i].Position == teams[y].Position)
                     {
-                        p.Points += 1;
+                        counterOfTeamsWithSamePosition += 1;
                     }
-                    else if(p.Points == previousSamePoints)
+                    else
                     {
-                        p.Points = p.Points + 1 + p.Points;
-                        p.Points = p.Points / 2;
+                        break;
                     }
+
                 }
-
-                p.Points = p.Rank;
-                previousSamePoints = p.Points;
-
-                Console.WriteLine(p.Name + " has " + p.Points + " points");
-
-
+               teams[i].Points = points;
+               // Console.WriteLine(teams[i].Name + " has " + teams[i].Points + " points");
             }
+            
             Console.WriteLine();
+            GetPoints(1, 1);
+        }
+
+        public static decimal GetPoints(int from, int to)
+        {
+            //teams = teams.OrderBy(i => i.Position).ToList();
+            //CalculatePoints(teams);
+            //decimal getPoints = 0;
+            //int previousPosition = -1;
+            //for(int i = 0; i < teams.Count; i += 1)
+            //{
+            //    if(teams[i].Position == previousPosition)
+            //    {
+            //        getPoints = (teams[i].Position + teams[i + 1].Position + 1) / 2m;
+            //    }
+            //    if(teams[i].Position != previousPosition)
+            //    {
+            //        getPoints = teams[i].Position;
+            //    }
+            //    previousPosition = teams[i].Position;
+            //}
+            //return getPoints;
+
+            decimal getPoints = 0;
+            from = 1;
+            to = 2;
+            getPoints = (from + to) / 2m;
+            return getPoints;
         }
 
     }

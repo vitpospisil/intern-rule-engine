@@ -15,16 +15,19 @@ namespace Rule_engine
 
             var race1 = races.FirstRace();
             Rules.CalculateRank(race1);
-            Rules.CalculatePoints(race1);
+            //Rules.CalculatePoints(race1);
+            Rules.GetPoints(1,1);
+            Console.WriteLine(Rules.GetPoints(1, 1));
+            Console.WriteLine();
             PrintRaceTable(race1);
             Console.ReadKey();
         }
 
         static void PrintRaceTable(List<Team> teams)
         {
-            foreach(var f in teams.OrderBy(i => i.Rank))
+            foreach(var f in teams.OrderBy(i => i.Position))
             {
-                Console.WriteLine(f.Name + " is at " + f.Position + " position");
+                Console.WriteLine(f.Name + " is at " + f.Position + ". position");
             }
             Console.WriteLine();
         }
