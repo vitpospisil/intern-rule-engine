@@ -15,11 +15,13 @@ namespace Rule_engine
 
             var race1 = races.FirstRace();
             Rules.CalculateRank(race1);
-            //Rules.CalculatePoints(race1);
-            Rules.GetPoints(1,1);
-            Console.WriteLine(Rules.GetPoints(1, 1));
+            Rules.CalculatePoints(race1);
+            var race2 = races.SecondRace();
+            Rules.CalculateRank(race2);
+            Rules.CalculatePoints(race2);
             Console.WriteLine();
             PrintRaceTable(race1);
+            PrintRaceTable(race2);
             Console.ReadKey();
         }
 
@@ -27,7 +29,7 @@ namespace Rule_engine
         {
             foreach(var f in teams.OrderBy(i => i.Position))
             {
-                Console.WriteLine(f.Name + " is at " + f.Position + ". position");
+                Console.WriteLine(f.Name + " position: " + f.Position + ", " +   "points: " +  f.Points);
             }
             Console.WriteLine();
         }

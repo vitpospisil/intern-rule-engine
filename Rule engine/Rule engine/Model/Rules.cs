@@ -34,18 +34,17 @@ namespace Rule_engine.Model
             Console.WriteLine();
         }
 
+
         public static void CalculatePoints(List<Team> teams)
         {
-            double points = 0;
-
-
             teams = teams.OrderBy(i => i.Position).ToList();
-            for(int i = 0; i < teams.Count; i += 1)
+            int counterOfTeamsWithSamePosition = 1;
+            for (int i = 0; i < teams.Count; i += counterOfTeamsWithSamePosition)
             {
-                int counterOfTeamsWithSamePosition = 0;
+                counterOfTeamsWithSamePosition = 1;
                 for (int y = i + 1; y < teams.Count; y += 1)
                 {
-                    if (teams[i].Position == teams[y].Position)
+                    if (teams[i].Rank == teams[y].Rank)
                     {
                         counterOfTeamsWithSamePosition += 1;
                     }
@@ -53,41 +52,30 @@ namespace Rule_engine.Model
                     {
                         break;
                     }
-
                 }
-               teams[i].Points = points;
-               // Console.WriteLine(teams[i].Name + " has " + teams[i].Points + " points");
+
+                decimal points = GetPoints(i + 1, i + counterOfTeamsWithSamePosition);
+
+                for(int j = i; j < i + counterOfTeamsWithSamePosition; j += 1)
+                {
+                    teams[j].Points = points;
+                }
+                //Console.WriteLine("points: {0}, i: {1}, counter: {2}", points, i, counterOfTeamsWithSamePosition);
             }
-            
+
             Console.WriteLine();
-            GetPoints(1, 1);
+
         }
 
         public static decimal GetPoints(int from, int to)
         {
-            //teams = teams.OrderBy(i => i.Position).ToList();
-            //CalculatePoints(teams);
-            //decimal getPoints = 0;
-            //int previousPosition = -1;
-            //for(int i = 0; i < teams.Count; i += 1)
-            //{
-            //    if(teams[i].Position == previousPosition)
-            //    {
-            //        getPoints = (teams[i].Position + teams[i + 1].Position + 1) / 2m;
-            //    }
-            //    if(teams[i].Position != previousPosition)
-            //    {
-            //        getPoints = teams[i].Position;
-            //    }
-            //    previousPosition = teams[i].Position;
-            //}
-            //return getPoints;
-
-            decimal getPoints = 0;
-            from = 1;
-            to = 2;
-            getPoints = (from + to) / 2m;
-            return getPoints;
+            decimal result = 0;
+            for (int i = from; i <= to; i += 1)
+            {
+                result += i;
+            }
+            decimal count = to - from + 1;
+            return result / count;
         }
 
     }
