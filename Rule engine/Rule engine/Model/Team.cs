@@ -11,7 +11,7 @@ namespace Rule_engine.Model
         public int Position { get; set; }
         public string Name { get; set; }
         public int Rank { get; set; }
-        public double Points { get; set; }
+        public decimal Points { get; set; }
         
 
         public Team(string name, int position)

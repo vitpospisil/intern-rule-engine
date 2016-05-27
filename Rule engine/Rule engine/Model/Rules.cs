@@ -15,7 +15,7 @@ namespace Rule_engine.Model
             int countOfTeamsWithSameRank = 0;
             foreach (var f in teams.OrderBy(i => i.Position))
             {
-                if (f.Position > 0)
+                if (f.Position != 0)
                 {
                     if(f.Position == previousposition)
                     {
@@ -24,7 +24,7 @@ namespace Rule_engine.Model
                     if (f.Position != previousposition)
                     {
                         rank = rank + 1 + countOfTeamsWithSameRank;
-                        countOfTeamsWithSameRank = 0;
+                        countOfTeamsWithSameRank = 0;   
                     }
                     f.Rank = rank;
                 }
@@ -34,34 +34,48 @@ namespace Rule_engine.Model
             Console.WriteLine();
         }
 
+
         public static void CalculatePoints(List<Team> teams)
         {
-            double previousSamePoints = -1;
             teams = teams.OrderBy(i => i.Position).ToList();
-            foreach (var p in teams.OrderBy(i => i.Position))
+            int counterOfTeamsWithSamePosition = 1;
+            for (int i = 0; i < teams.Count; i += counterOfTeamsWithSamePosition)
             {
-                
-                if(p.Points > 0)
+                counterOfTeamsWithSamePosition = 1;
+                for (int y = i + 1; y < teams.Count; y += 1)
                 {
-                    if(p.Points != previousSamePoints)
+                    if (teams[i].Rank == teams[y].Rank)
                     {
-                        p.Points += 1;
+                        counterOfTeamsWithSamePosition += 1;
                     }
-                    else if(p.Points == previousSamePoints)
+                    else
                     {
-                        p.Points = p.Points + 1 + p.Points;
-                        p.Points = p.Points / 2;
+                        break;
                     }
                 }
 
-                p.Points = p.Rank;
-                previousSamePoints = p.Points;
+                decimal points = GetPoints(i + 1, i + counterOfTeamsWithSamePosition);
 
-                Console.WriteLine(p.Name + " has " + p.Points + " points");
-
-
+                for(int j = i; j < i + counterOfTeamsWithSamePosition; j += 1)
+                {
+                    teams[j].Points = points;
+                }
+                //Console.WriteLine("points: {0}, i: {1}, counter: {2}", points, i, counterOfTeamsWithSamePosition);
             }
+
             Console.WriteLine();
+
+        }
+
+        public static decimal GetPoints(int from, int to)
+        {
+            decimal result = 0;
+            for (int i = from; i <= to; i += 1)
+            {
+                result += i;
+            }
+            decimal count = to - from + 1;
+            return result / count;
         }
 
     }
