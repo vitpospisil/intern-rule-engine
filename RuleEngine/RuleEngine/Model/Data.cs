@@ -36,9 +36,18 @@ namespace RuleEngine.Model
                 }
                 Races.Add(Teams);
             }
-            foreach(List<Race> race in Races)
+        }
+
+        public void Sort()
+        {
+            for(int i = 0; i < Races.Count; i++)
             {
-                foreach(Race team in race)
+                Races[i] = Races[i].OrderBy(x => x.Position).ToList();
+            }
+
+            foreach (List<Race> race in Races)
+            {
+                foreach (Race team in race)
                 {
                     Console.WriteLine(team.TeamName + " - " + team.Position);
                 }

@@ -13,6 +13,7 @@ namespace RuleEngine
         {
             Data data = new Data();
             data.GetData();
+            data.Sort();
             Console.ReadKey();
         }
     }
