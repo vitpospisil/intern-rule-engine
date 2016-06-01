@@ -44,15 +44,6 @@ namespace RuleEngine.Model
             {
                 Races[i] = Races[i].OrderBy(x => x.Position).ToList();
             }
-
-            foreach (List<Team> race in Races)
-            {
-                foreach (Team team in race)
-                {
-                    Console.WriteLine(team.TeamName + " - " + team.Position);
-                }
-                Console.WriteLine();
-            }
         }
     }
 }

@@ -8,13 +8,10 @@ namespace RuleEngine.Model
 {
     class Rank
     {
-        List<Team> Ranks;
         public void GetRank(List<List<Team>> Races)
         {
-            Console.WriteLine("Ranks");
             foreach(var race in Races)
             {
-                Ranks = new List<Team>();
                 for(int i = 0; i < race.Count; i++)
                 {
                     int rank = i +1;
@@ -22,13 +19,9 @@ namespace RuleEngine.Model
                     {
                         rank = y +1;
                     }
-                    Team t = new Team();
-                    t.TeamName = race[i].TeamName;
-                    t.Position = rank;
-                    Ranks.Add(t);
-                    Console.WriteLine(t.TeamName + " - " + t.Position);
+                    race[i].TeamName = race[i].TeamName;
+                    race[i].Rank = rank;
                 }
-                Console.WriteLine();
             }
         }
     }

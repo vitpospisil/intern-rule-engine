@@ -16,6 +16,14 @@ namespace RuleEngine
             data.GetData();
             data.Sort();
             rank.GetRank(data.Races);
+            foreach(var race in data.Races)
+            {
+                foreach(var team in race)
+                {
+                    Console.WriteLine(team.TeamName + " - " + team.Position + ". position " + " rank - " + team.Rank);
+                }
+                Console.WriteLine();
+            }
             Console.ReadKey();
         }
     }
