@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace RuleEngine.Model
 {
-    class Race
+    class Team
     {
         public string TeamName { get; set; }
-        public int Position { get; private set; }
+        public int Position { get; set; }
         public void SetPosition(string position)
         {
             int pos = 0;

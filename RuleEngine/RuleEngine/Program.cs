@@ -12,8 +12,10 @@ namespace RuleEngine
         static void Main(string[] args)
         {
             Data data = new Data();
+            Rank rank = new Rank();
             data.GetData();
             data.Sort();
+            rank.GetRank(data.Races);
             Console.ReadKey();
         }
     }

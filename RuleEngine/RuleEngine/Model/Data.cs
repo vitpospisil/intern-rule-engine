@@ -10,7 +10,7 @@ namespace RuleEngine.Model
     class Data
     {
         List<Stream> DataList = new List<Stream>();
-        public List<List<Race>> Races = new List<List<Race>>();
+        public List<List<Team>> Races = new List<List<Team>>();
         public void GetData()
         {
             DataList.Add(File.OpenRead(@"C:\Users\Vítek\ST_SW\intern-rule-engine\data1\race1.csv"));
@@ -19,7 +19,7 @@ namespace RuleEngine.Model
             foreach (Stream data in DataList)
             {
                 StreamReader reader = new StreamReader(data);
-                List<Race> Teams = new List<Race>();
+                List<Team> Teams = new List<Team>();
                 int lineNumber = 1;
                 while (!reader.EndOfStream)
                 {
@@ -27,7 +27,7 @@ namespace RuleEngine.Model
                     string[] items = line.Split(',');
                     if (lineNumber != 1)
                     {
-                        Race t = new Race();
+                        Team t = new Team();
                         t.TeamName = items[0];
                         t.SetPosition(items[1]);
                         Teams.Add(t);
@@ -45,9 +45,9 @@ namespace RuleEngine.Model
                 Races[i] = Races[i].OrderBy(x => x.Position).ToList();
             }
 
-            foreach (List<Race> race in Races)
+            foreach (List<Team> race in Races)
             {
-                foreach (Race team in race)
+                foreach (Team team in race)
                 {
                     Console.WriteLine(team.TeamName + " - " + team.Position);
                 }
