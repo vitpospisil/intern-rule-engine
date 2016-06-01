@@ -8,7 +8,7 @@ namespace RuleEngine.Model
 {
     class Rank
     {
-        public void GetRank(List<List<Team>> Races)
+        public static void GetRank(List<List<Team>> Races)
         {
             foreach(var race in Races)
             {
@@ -22,6 +22,7 @@ namespace RuleEngine.Model
                     race[i].TeamName = race[i].TeamName;
                     race[i].Rank = rank;
                 }
+                Points.GetPoints(race);
             }
         }
     }

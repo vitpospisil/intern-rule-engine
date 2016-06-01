@@ -11,6 +11,8 @@ namespace RuleEngine.Model
         public string TeamName { get; set; }
         public int Position { get; private set; }
         public int Rank { get; set; }
+        public decimal Points { get; set; }
+
         public void SetPosition(string position)
         {
             int pos = 0;
