@@ -23,6 +23,7 @@ namespace RuleEngine.Model
                 {
                     Team t = new Team();
                     t.TeamName = items[0];
+                    t.ID = items[0];
                     t.Position = Helper.ParseStringToInt(items[1]);
                     r.Teams.Add(t);
                 }

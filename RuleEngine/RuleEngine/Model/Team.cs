@@ -12,5 +12,6 @@ namespace RuleEngine.Model
         public int Position { get; set; }
         public int Rank { get; set; }
         public decimal Points { get; set; }
+        public string ID { get; set; }
     }
 }

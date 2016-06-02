@@ -17,15 +17,15 @@ namespace RuleEngine
             races.Add(RaceLoader.ReadRace(@"C:\Users\Vítek\ST_SW\intern-rule-engine\data1\race3.csv"));
             foreach (Race r in races)
             {
-                r.Teams = Helper.Sort(r.Teams);
                 Rank.CalculateRank(r.Teams);
-                Points.CalculatePoints(r.Teams);
-                foreach (var team in r.Teams)
+                Points.CalculatePoints(r.Teams, Pointing_system.OwnPointingSystem);
+                foreach (var team in r.Teams.OrderBy(x => x.Position))
                 {
                     Console.WriteLine(team.TeamName + " - " + team.Position + ". position " + " rank - " + team.Rank + " with " + team.Points + " points");
                 }
                 Console.WriteLine();
             }
+            Summary.CalculateSummary(races);
             
             Console.ReadKey();
         }

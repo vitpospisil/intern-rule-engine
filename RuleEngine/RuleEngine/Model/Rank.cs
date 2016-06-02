@@ -8,16 +8,17 @@ namespace RuleEngine.Model
 {
     class Rank
     {
-        public static void CalculateRank(List<Team> race)
+        public static void CalculateRank(List<Team> teams)
         {
-            for(int i = 0; i < race.Count; i++)
+            teams = teams.OrderBy(x => x.Position).ToList();
+            for (int i = 0; i < teams.Count; i++)
             {
                 int rank = i +1;
-                for(int y = i ; y >= 0 && race[i].Position == race[y].Position; y--)
+                for(int y = i ; y >= 0 && teams[i].Position == teams[y].Position; y--)
                 {
                     rank = y +1;
-                }                    
-                race[i].Rank = rank;
+                }
+                teams[i].Rank = rank;
             }
         }
     }
