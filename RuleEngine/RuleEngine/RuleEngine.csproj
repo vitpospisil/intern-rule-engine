@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Data.cs" />
+    <Compile Include="Model\RaceLoader.cs" />
     <Compile Include="Model\Helper.cs" />
     <Compile Include="Model\Points.cs" />
     <Compile Include="Model\Race.cs" />

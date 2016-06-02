@@ -11,15 +11,16 @@ namespace RuleEngine
     {
         static void Main(string[] args)
         {
-            Data data = new Data();
-            
-            data.ReadData();
-            foreach (Race r in data.Races)
+            List<Race> races = new List<Race>();
+            races.Add(RaceLoader.ReadRace(@"C:\Users\Vítek\ST_SW\intern-rule-engine\data1\race1.csv"));
+            races.Add(RaceLoader.ReadRace(@"C:\Users\Vítek\ST_SW\intern-rule-engine\data1\race2.csv"));
+            races.Add(RaceLoader.ReadRace(@"C:\Users\Vítek\ST_SW\intern-rule-engine\data1\race3.csv"));
+            foreach (Race r in races)
             {
-                Helper.Sort(r.race);
-                Rank.CalculateRank(r.race);
-                Points.CalculatePoints(r.race);
-                foreach (var team in r.race)
+                r.Teams = Helper.Sort(r.Teams);
+                Rank.CalculateRank(r.Teams);
+                Points.CalculatePoints(r.Teams);
+                foreach (var team in r.Teams)
                 {
                     Console.WriteLine(team.TeamName + " - " + team.Position + ". position " + " rank - " + team.Rank + " with " + team.Points + " points");
                 }

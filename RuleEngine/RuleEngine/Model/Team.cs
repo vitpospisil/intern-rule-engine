@@ -9,15 +9,8 @@ namespace RuleEngine.Model
     class Team
     {
         public string TeamName { get; set; }
-        public int Position { get; private set; }
+        public int Position { get; set; }
         public int Rank { get; set; }
         public decimal Points { get; set; }
-
-        public void SetPosition(string position)
-        {
-            int pos = 0;
-            int.TryParse(position, out pos);
-            Position = pos;
-        }
     }
 }

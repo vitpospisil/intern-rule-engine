@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace RuleEngine.Model
 {
+    
     class Points
     {
         public static void CalculatePoints(List<Team> race)
         {
+            
             foreach(var team in race)
             {
                 decimal count = 0m;
@@ -20,10 +22,10 @@ namespace RuleEngine.Model
                         count++;
                     }
                 }
-                int rank = team.Rank;
+                int rank = Helper.PointArray(team.Rank);
                 for(int i = 1; i < count; i++)
                 {
-                    rank += team.Rank + i;
+                    rank += Helper.PointArray(team.Rank + i);
                 }
                 team.Points = rank / count;
             }

@@ -8,6 +8,6 @@ namespace RuleEngine.Model
 {
     class Race
     {
-        public List<Team> race = new List<Team>();
+        public List<Team> Teams = new List<Team>();
     }
 }
