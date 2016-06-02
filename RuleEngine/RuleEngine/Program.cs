@@ -12,17 +12,20 @@ namespace RuleEngine
         static void Main(string[] args)
         {
             Data data = new Data();
-            data.GetData();
-            data.Sort();
-            Rank.GetRank(data.Races);
-            foreach(var race in data.Races)
+            
+            data.ReadData();
+            foreach (Race r in data.Races)
             {
-                foreach(var team in race)
+                Helper.Sort(r.race);
+                Rank.CalculateRank(r.race);
+                Points.CalculatePoints(r.race);
+                foreach (var team in r.race)
                 {
                     Console.WriteLine(team.TeamName + " - " + team.Position + ". position " + " rank - " + team.Rank + " with " + team.Points + " points");
                 }
                 Console.WriteLine();
             }
+            
             Console.ReadKey();
         }
     }

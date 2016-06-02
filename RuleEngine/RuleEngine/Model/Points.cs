@@ -8,7 +8,7 @@ namespace RuleEngine.Model
 {
     class Points
     {
-        public static void GetPoints(List<Team> race)
+        public static void CalculatePoints(List<Team> race)
         {
             foreach(var team in race)
             {

@@ -9,40 +9,32 @@ namespace RuleEngine.Model
 {
     class Data
     {
-        List<Stream> DataList = new List<Stream>();
-        public List<List<Team>> Races = new List<List<Team>>();
-        public void GetData()
+        List<IEnumerable<string>> DataList = new List<IEnumerable<string>>();
+        public List<Race> Races = new List<Race>();
+        Race r;
+        public void ReadData()
         {
-            DataList.Add(File.OpenRead(@"C:\Users\Vítek\ST_SW\intern-rule-engine\data1\race1.csv"));
-            DataList.Add(File.OpenRead(@"C:\Users\Vítek\ST_SW\intern-rule-engine\data1\race2.csv"));
-            DataList.Add(File.OpenRead(@"C:\Users\Vítek\ST_SW\intern-rule-engine\data1\race3.csv"));
-            foreach (Stream data in DataList)
+            DataList.Add(File.ReadLines(@"C:\Users\Vítek\ST_SW\intern-rule-engine\data1\race1.csv"));
+            DataList.Add(File.ReadLines(@"C:\Users\Vítek\ST_SW\intern-rule-engine\data1\race2.csv"));
+            DataList.Add(File.ReadLines(@"C:\Users\Vítek\ST_SW\intern-rule-engine\data1\race3.csv"));
+            foreach (IEnumerable<string> data in DataList)
             {
-                StreamReader reader = new StreamReader(data);
-                List<Team> Teams = new List<Team>();
+                r = new Race();
                 int lineNumber = 1;
-                while (!reader.EndOfStream)
+                foreach (string line in data)
                 {
-                    string line = reader.ReadLine();
+
                     string[] items = line.Split(',');
                     if (lineNumber != 1)
                     {
                         Team t = new Team();
                         t.TeamName = items[0];
                         t.SetPosition(items[1]);
-                        Teams.Add(t);
+                        r.race.Add(t);
                     }
                     lineNumber++;
                 }
-                Races.Add(Teams);
-            }
-        }
-
-        public void Sort()
-        {
-            for(int i = 0; i < Races.Count; i++)
-            {
-                Races[i] = Races[i].OrderBy(x => x.Position).ToList();
+                Races.Add(r);
             }
         }
     }
