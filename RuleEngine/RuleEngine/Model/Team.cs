@@ -1,8 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RuleEngine.Model
 {
@@ -13,5 +10,6 @@ namespace RuleEngine.Model
         public int Rank { get; set; }
         public decimal Points { get; set; }
         public string ID { get; set; }
+        public List<RaceResult> RaceResults = new List<RaceResult>();
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="Model\Helper.cs" />
     <Compile Include="Model\Points.cs" />
     <Compile Include="Model\Race.cs" />
+    <Compile Include="Model\RaceResult.cs" />
     <Compile Include="Model\Summary.cs" />
     <Compile Include="Model\Team.cs" />
     <Compile Include="Model\Rank.cs" />

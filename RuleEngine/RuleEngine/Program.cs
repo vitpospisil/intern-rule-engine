@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RuleEngine.Model;
 
 namespace RuleEngine
@@ -18,7 +16,7 @@ namespace RuleEngine
             foreach (Race r in races)
             {
                 Rank.CalculateRank(r.Teams);
-                Points.CalculatePoints(r.Teams, Pointing_system.OwnPointingSystem);
+                Points.CalculatePoints(r.Teams, Pointing_system.BasicPointingSystem);
                 foreach (var team in r.Teams.OrderBy(x => x.Position))
                 {
                     Console.WriteLine(team.TeamName + " - " + team.Position + ". position " + " rank - " + team.Rank + " with " + team.Points + " points");
