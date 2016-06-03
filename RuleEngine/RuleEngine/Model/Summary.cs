@@ -8,25 +8,29 @@ namespace RuleEngine.Model
 {
     class Summary
     {
-        public static void CalculateSummary(List<Race> races)
+        public static List<Team> CalculateSummary(List<Race> races)
         {
-            List<Team> FinalStats = new List<Team>();
-            for (int i = 0; i < races[0].Teams.Count; i++)
-                {
-                    FinalStats.Add(races[0].Teams[i]);
-                    FinalStats[i].ID = races[0].Teams[i].ID;
-                }
-            foreach(Race teams in races)
+            Dictionary<string, decimal> FinalPoints = new Dictionary<string, decimal>();
+            foreach(Race race in races)
             {
-                for(int i = 0; i < FinalStats.Count; i++)
+                foreach(Team team in race.Teams)
                 {
-                    FinalStats[i].Points += teams.Teams[i].Points;
+                    if (FinalPoints.ContainsKey(team.ID))
+                    {
+                        FinalPoints[team.ID] += team.Points;
+                    }
+                    else
+                    {
+                        FinalPoints.Add(team.ID, team.Points);
+                    }
                 }
             }
-            foreach(Team team in FinalStats)
+            List<Team> FinalTeams = races[0].Teams;
+            foreach(Team team in FinalTeams)
             {
-                Console.WriteLine(team.ID + " " + team.Position);
+                team.Points = FinalPoints[team.ID];
             }
+            return FinalTeams.OrderBy(x => x.Points).ToList();
         }
     }
 }

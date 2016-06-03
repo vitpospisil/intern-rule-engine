@@ -25,8 +25,11 @@ namespace RuleEngine
                 }
                 Console.WriteLine();
             }
-            Summary.CalculateSummary(races);
-            
+            List<Team> Sum = Summary.CalculateSummary(races);
+            foreach(var team in Sum)
+            {
+                Console.WriteLine(team.TeamName + " with " + team.Points);
+            }
             Console.ReadKey();
         }
     }
